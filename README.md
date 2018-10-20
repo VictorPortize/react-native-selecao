@@ -1,4 +1,4 @@
 # react-native-selecao
 -----------------------------
 
-run npm install
+run npm install to install the dependencies
