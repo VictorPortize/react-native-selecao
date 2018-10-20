@@ -1,1 +1,4 @@
-# React-Native-Selecao
+# react-native-selecao
+-----------------------------
+
+run npm install
