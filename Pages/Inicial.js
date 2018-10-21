@@ -53,12 +53,17 @@ export default class Inicial extends React.Component {
             }}></TextInput>
             <Button style={{flex:0.2}} mode="contained"
             onPress={() => {
-                if(nota >= 1 && (notas.includes(Number.parseInt(nota)))){
+                if(notas.includes(Number.parseInt(nota))){
+                    Alert.alert("Erro","A Nota digitada já está presente na lista")
+                }
+                else if(nota >= 1){
                     let array = notas
                     array.push(nota)
                     array.sort((a,b) => b-a)
                     this.setState({notas:array,nota:''})
                     this.render()
+                }else if(nota < 0){
+                    Alert.alert("Erro",'Por favor insira uma nota com valor positivo')
                 }
             }}>Add</Button>
         </View>
