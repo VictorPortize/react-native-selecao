@@ -47,7 +47,7 @@ export default class Resultado extends React.Component{
                             <List.Item key={indice} title={"Nenhuma nota de "+value} ></List.Item> : 
                             <List.Item key={indice} title={quantidade[indice]+'notas de '+ value}></List.Item>)}
                     </List.Accordion>;
-                    <Text style={{alignSelf:'center',fontSize:20,marginBottom:10}}>{valor == 0? "":"Sobra: "+valor}</Text>
+                    <Text style={styles.textSobra}>{valor == 0? "":"Sobra: "+valor}</Text>
                     <Button mode='contained' onPress={() => this.props.navigation.replace('Inicial')}>Voltar</Button>
                 </View>
             </View>
@@ -65,5 +65,10 @@ const styles = StyleSheet.create({
     container:{
         width:width*0.70,
         alignSelf:'center'
+    },
+    sobra:{
+        alignSelf:'center',
+        fontSize:20,
+        marginBottom:10
     }
 })

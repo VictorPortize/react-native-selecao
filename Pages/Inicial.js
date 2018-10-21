@@ -23,8 +23,8 @@ export default class Inicial extends React.Component {
       <ScrollView style={{backgroundColor:'white'}}>
       <Header outerContainerStyles={{height:90,}}
       centerComponent={<Text style={{fontSize:40,fontWeight:'bold'}}>Calcular troco</Text>}></Header>
-        <Text style={{marginTop:69,alignSelf:'center',fontSize:20}}>Número digitado</Text>
-        <Text style={styles.numero}>{this.state.numero}</Text>
+        <Text style={styles.textTitle}>Número digitado</Text>
+        <Text style={styles.numero}>{numero}</Text>
         
         <View style={styles.container2}>
             <TextInput value={valor} style={[styles.textInput,{width:width*0.50,flex:0.8}]} keyboardType='numeric'
@@ -65,21 +65,22 @@ export default class Inicial extends React.Component {
         
         <View style={styles.list}>
             <List.Accordion title={"Notas disponiveis"}>
-                {this.state.notas.map((valor,indice) => <List.Item key={indice} title={valor} onPress={() =>{
+                {this.state.notas.map((valor,indice) => <List.Item key={indice} title={valor} 
+                onPress={() =>{
                     let array = notas
                     array.splice(indice,1)
                     this.setState({notas:array})
                     this.render
-                }} ></List.Item>)}
+                }}></List.Item>)}
             </List.Accordion>
-            <Button style={[styles.button,{backgroundColor:'red'}]} mode='contained' onPress={() => this.setState({notas:[]})} >Limpar Notas</Button>
+            <Button style={styles.buttonApagar} mode='contained' onPress={() => this.setState({notas:[]})} >Limpar Notas</Button>
         </View>
-        <Button mode='contained' style={[styles.button,{width:width*0.8,alignSelf:'center'}]} onPress={ () => {
+        <Button mode='contained' style={styles.buttonCalcular} onPress={ () => {
             if(numero > 0){
             this.props.navigation.replace('Resultado',{notas,numero})
-        }else{
-            Alert.alert("Erro","Por favor insira um número maior que 0 (zero)")
-        }
+            }else{
+                Alert.alert("Erro","Por favor insira um número maior que 0 (zero)")
+            }
         }}>Calcular</Button>
       </ScrollView>
     );
@@ -111,11 +112,23 @@ const styles = StyleSheet.create({
     backgroundColor:'rgba(0,0,0,0.05)'
   },
   list:{
-      width:width*0.65,
-      alignSelf:'center',
-      marginTop:20
+    width:width*0.65,
+    alignSelf:'center',
+    marginTop:20
   },
-  button:{
-      marginTop:20,
+  buttonCalcular:{
+    marginTop:30,
+    width:width*0.8,
+    alignSelf:'center'
+  },
+  textTitle:{
+    marginTop:70,
+    alignSelf:'center',
+    fontSize:20
+  },
+  buttonApagar:{
+    marginTop:30,
+    backgroundColor:'red'
   }
 });
+
